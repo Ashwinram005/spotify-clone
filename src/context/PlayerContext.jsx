@@ -36,6 +36,26 @@ const PlayerContextProvider=(props)=>{
         setIsPlaying(true);
     }
 
+    const previous=async()=>{
+        if(track.id>0){
+            await setTrack(songsData[track.id-1]);
+            await audioRef.current.play();
+            setIsPlaying(true);
+        }
+    }
+
+    const next=async()=>{
+        if(track.id<songsData.length-1){
+            await setTrack(songsData[track.id+1]);
+            await audioRef.current.play();
+            setIsPlaying(true);
+        }
+    }
+
+    const seekSong=async(e)=>{
+        audioRef.current.currentTime=((e.nativeEvent.offsetX/seekBg.current.offsetWidth)*audioRef.current.duration)
+    }   
+    
     useEffect(()=>{
         
         setTimeout(() => {
@@ -55,7 +75,7 @@ const PlayerContextProvider=(props)=>{
         }, 1000);
 
     },[audioRef])
-
+    
     const contextValue={
         audioRef,
         seekBar,
@@ -64,7 +84,10 @@ const PlayerContextProvider=(props)=>{
         isPlaying,setIsPlaying,
         time,setTime,
         play,pause,
-        playWithId
+        playWithId,
+        previous,
+        next,
+        seekSong
     }
 
     return (
