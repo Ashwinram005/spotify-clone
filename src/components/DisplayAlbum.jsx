@@ -7,6 +7,7 @@ const DisplayAlbum = () => {
     const albumData=albumsData[id];
     console.log(albumData);
     console.log(id);
+    
     return (
         <>
             <Navbar/>
