@@ -1,5 +1,5 @@
 import { albumsData, songsData } from "../assets/assets"
-import AlbumItem from "./ALbumItem"
+import AlbumItem from "./AlbumItem"
 import Navbar from "./Navbar"
 import SongItem from "./SongItem"
 
